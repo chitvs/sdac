@@ -1,0 +1,27 @@
+# Java compiled files
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+.eclipse/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build directories
+bin/
+build/
+target/
+out/
+
+# C compiled files
+*.o
+*.exe
+*.out
+a.out
