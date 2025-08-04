@@ -34,7 +34,7 @@ make
 
 Alternatively, compile manually:
 ```sh
-gcc -Wall -g -o <executable> <source_files>
+gcc -g -o <executable> <source_files>
 ```
 
 > [!NOTE]  
