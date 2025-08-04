@@ -26,7 +26,7 @@ class BubbleSort {
     // Esercizio 2
     static void e2(String args[]) {
         int arr[] = new int[args.length];
-        for (int i = 0; i<args.length; i++){
+        for (int i = 0; i < args.length; i++){
             arr[i] = Integer.parseInt(args[i]);
         } 
         BubbleSort ob = new BubbleSort(); 
@@ -39,7 +39,7 @@ class BubbleSort {
     static void e3(int n) {
         int arr[] = new int[n];
         Random rnd = new Random();
-        for (int i = 0; i<n; i++){
+        for (int i = 0; i < n; i++){
             arr[i] = rnd.nextInt(100);
         } 
         BubbleSort ob = new BubbleSort(); 
