@@ -4,49 +4,50 @@ public class Driver {
     public static void main(String[] args) {
 
         int[] arrTest = new int[] {31,-41,59,26,-53,58,97,-93,-23,84};
-
-        if(args[0].equals("brute")){
-            System.out.println("Somma attesa: 187");
-            Azzardo.GiocataVincente resultBrute = Azzardo.bruteForce(arrTest);
-            if (resultBrute.start == -1) {
-                System.out.println("  Nessun intervallo valido (array vuoto).");
-            } else {
-                System.out.println("  Intervallo massimo: da indice " + resultBrute.start + " a " + resultBrute.end);
-                System.out.println("  Sottoarray massimo: " + java.util.Arrays.toString(resultBrute.subPlay));
-                System.out.println("  Somma massima: " + resultBrute.maxWin);
+        if (args.length > 0){
+            if(args[0].equals("brute")){
+                System.out.println("Somma attesa: 187");
+                Azzardo.GiocataVincente resultBrute = Azzardo.bruteForce(arrTest);
+                if (resultBrute.start == -1) {
+                    System.out.println("  Nessun intervallo valido (array vuoto).");
+                } else {
+                    System.out.println("  Intervallo massimo: da indice " + resultBrute.start + " a " + resultBrute.end);
+                    System.out.println("  Sottoarray massimo: " + java.util.Arrays.toString(resultBrute.subPlay));
+                    System.out.println("  Somma massima: " + resultBrute.maxWin);
+                }
             }
-        }
-        else if(args[0].equals("faster")){
-            System.out.println("Somma attesa: 187");
-            Azzardo.GiocataVincente resultFaster = Azzardo.faster(arrTest);
-            if (resultFaster.start == -1) {
-                System.out.println("  Nessun intervallo valido (array vuoto).");
-            } else {
-                System.out.println("  Intervallo massimo: da indice " + resultFaster.start + " a " + resultFaster.end);
-                System.out.println("  Sottoarray massimo: " + java.util.Arrays.toString(resultFaster.subPlay));
-                System.out.println("  Somma massima: " + resultFaster.maxWin);
+            else if(args[0].equals("faster")){
+                System.out.println("Somma attesa: 187");
+                Azzardo.GiocataVincente resultFaster = Azzardo.faster(arrTest);
+                if (resultFaster.start == -1) {
+                    System.out.println("  Nessun intervallo valido (array vuoto).");
+                } else {
+                    System.out.println("  Intervallo massimo: da indice " + resultFaster.start + " a " + resultFaster.end);
+                    System.out.println("  Sottoarray massimo: " + java.util.Arrays.toString(resultFaster.subPlay));
+                    System.out.println("  Somma massima: " + resultFaster.maxWin);
+                }
             }
-        }
-        else if(args[0].equals("bolt")){
-            System.out.println("Somma attesa: 187");
-            Azzardo.GiocataVincente resultBolt = Azzardo.bolt(arrTest);
-            if (resultBolt.start == -1) {
-                System.out.println("  Nessun intervallo valido (array vuoto).");
-            } else {
-                System.out.println("  Intervallo massimo: da indice " + resultBolt.start + " a " + resultBolt.end);
-                System.out.println("  Sottoarray massimo: " + java.util.Arrays.toString(resultBolt.subPlay));
-                System.out.println("  Somma massima: " + resultBolt.maxWin);
+            else if(args[0].equals("bolt")){
+                System.out.println("Somma attesa: 187");
+                Azzardo.GiocataVincente resultBolt = Azzardo.bolt(arrTest);
+                if (resultBolt.start == -1) {
+                    System.out.println("  Nessun intervallo valido (array vuoto).");
+                } else {
+                    System.out.println("  Intervallo massimo: da indice " + resultBolt.start + " a " + resultBolt.end);
+                    System.out.println("  Sottoarray massimo: " + java.util.Arrays.toString(resultBolt.subPlay));
+                    System.out.println("  Somma massima: " + resultBolt.maxWin);
+                }
             }
-        }
-        else if(args[0].equals("golden")){
-            System.out.println("Somma attesa: 187");
-            Azzardo.GiocataVincente resultGolden = Azzardo.goldenSolution(arrTest);
-            if (resultGolden.start == -1) {
-                System.out.println("  Nessun intervallo valido (array vuoto).");
-            } else {
-                System.out.println("  Intervallo massimo: da indice " + resultGolden.start + " a " + resultGolden.end);
-                System.out.println("  Sottoarray massimo: " + java.util.Arrays.toString(resultGolden.subPlay));
-                System.out.println("  Somma massima: " + resultGolden.maxWin);
+            else if(args[0].equals("golden")){
+                System.out.println("Somma attesa: 187");
+                Azzardo.GiocataVincente resultGolden = Azzardo.goldenSolution(arrTest);
+                if (resultGolden.start == -1) {
+                    System.out.println("  Nessun intervallo valido (array vuoto).");
+                } else {
+                    System.out.println("  Intervallo massimo: da indice " + resultGolden.start + " a " + resultGolden.end);
+                    System.out.println("  Sottoarray massimo: " + java.util.Arrays.toString(resultGolden.subPlay));
+                    System.out.println("  Somma massima: " + resultGolden.maxWin);
+                }
             }
         }
         else{
