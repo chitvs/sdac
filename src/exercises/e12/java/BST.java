@@ -1,166 +1,209 @@
 public class BST<V> {
-    
-    private class Node {
-        private int key;
-        private V value;
-        private Node left;
-        private Node right;
-        
+
+    private Node<V> root;
+
+    /* Classe interna che descrive il generico nodo del BST */
+    public static class Node<V> {
+        protected int key;
+        protected V value;
+        protected Node<V> left;
+        protected Node<V> right;
+
         public Node(int key, V value) {
             this.key = key;
             this.value = value;
-            this.left = null;
-            this.right = null;
+        }
+        
+        @Override
+        public String toString() {
+            return "[chiave: " + key + ", valore: " + value + "]";
         }
     }
-    
-    private Node root;
-    
+
+    /* Costruttore */
     public BST(int key, V value) {
-        this.root = new Node(key, value);
+        this.root = new Node<V>(key, value);
     }
-    
+
+    /* Restituisce la radice del BST */
+    public Node<V> getRoot() {
+        return this.root;
+    }
+
+    /* Metodo ausiliario per insert */
+    private void insert(Node<V> t, int k, V v) {
+        if (t.key == k) {
+
+            t.value = v;
+
+        } else if (k < t.key) {
+
+            if (t.left == null)
+                t.left = new Node<V>(k, v);
+            else
+                insert(t.left, k, v);
+
+        } else {
+
+            if (t.right == null)
+                t.right = new Node<V>(k, v);
+            else
+                insert(t.right, k, v);
+
+        }
+    }
+
+    /* Inserisce la coppia (k, v) nel BST */
     public void insert(int k, V v) {
-        root = insertRec(root, k, v);
+        if (this.root == null)
+            this.root = new Node<V>(k, v);
+
+        else
+            insert(this.root, k, v);
     }
-    
-    private Node insertRec(Node node, int k, V v) {
-        if (node == null) {
-            return new Node(k, v);
-        }
-        
-        if (k < node.key) {
-            node.left = insertRec(node.left, k, v);
-        } else if (k > node.key) {
-            node.right = insertRec(node.right, k, v);
-        } else {
-            // Chiave già esistente, sovrascrive il valore
-            node.value = v;
-        }
-        
-        return node;
-    }
-    
-    public V find(int k) {
-        Node result = findRec(root, k);
-        return result != null ? result.value : null;
-    }
-    
-    private Node findRec(Node node, int k) {
-        if (node == null || node.key == k) {
-            return node;
-        }
-        
-        if (k < node.key) {
-            return findRec(node.left, k);
-        } else {
-            return findRec(node.right, k);
-        }
-    }
-    
-    public int findMin() {
-        if (root == null) {
-            throw new RuntimeException("BST vuoto");
-        }
-        return findMinRec(root).key;
-    }
-    
-    private Node findMinRec(Node node) {
-        while (node.left != null) {
-            node = node.left;
-        }
-        return node;
-    }
-    
-    public void removeMin() {
-        if (root == null) {
-            return;
-        }
-        root = removeMinRec(root);
-    }
-    
-    private Node removeMinRec(Node node) {
-        if (node.left == null) {
-            return node.right;
-        }
-        node.left = removeMinRec(node.left);
-        return node;
-    }
-    
-    public void remove(int k) {
-        root = removeRec(root, k);
-    }
-    
-    private Node removeRec(Node node, int k) {
-        if (node == null) {
+
+    /* Metodo ausiliario per find */
+    private V find(Node<V> t, int k) {
+        if (t == null)
             return null;
+
+        else if (t.key == k)
+            return t.value;
+
+        else if (k < t.key)
+            return find(t.left, k);
+
+        else
+            return find(t.right, k);
+    }
+
+    /* Restituisce l’unico valore associato ad una chiave */
+    public V find(int k) {
+        if (this.root == null)
+            return null;
+        else
+            return find(this.root, k);
+    }
+
+    /* Metodo ausiliario per findMin */
+    private Node<V> findMin(Node<V> t) {
+        if (t.left == null)
+            return t;
+
+        return findMin(t.left);
+    }
+
+    /* Restituisce la chiave minima contenuta nel BST */
+    public int findMin() {
+        if (this.root == null)
+            return -1;
+
+        return findMin(this.root).key;
+    }
+
+    /* Metodo ausiliario per removeMin */
+    private Node<V> removeMin(Node<V> t) {
+        // we are on the min key
+        if (t.left == null) {
+            return t.right;
         }
+
+        t.left = removeMin(t.left);
+        return t;
+    }
+
+    /* Elimina il nodo con la chiave minima contenuta nel BST */
+    public void removeMin() {
+        if (this.root == null)
+            return;
+
+        this.root = removeMin(this.root);
+    }
+
+    /* Metodo ausiliario per remove */
+    private Node<V> remove(Node<V> n, int k) {
+        if (n == null)
+            return null;
+
+        else if (k < n.key)
+            n.left = remove(n.left, k);
+
+        else if (k > n.key)
+            n.right = remove(n.right, k);
+
+        else {
+            if (n.right == null)
+                return n.left;
+
+            if (n.left == null)
+                return n.right;
+
+            Node<V> to_remove = n;
+
+            n = findMin(to_remove.right);
+            Node<V> nn = new Node<V>(n.key, n.value);
+            nn.right = removeMin(to_remove.right);
+            nn.left = to_remove.left;
+            n = nn;
+        }
+
+        return n;
+    }
+
+    /* Elimina dal BST il nodo con chiave k (se esiste) */
+    public void remove(int k) {
+        if (this.root == null)
+            return;
+
+        this.root = remove(this.root, k);
+    }
+
+    /* Metodo ausiliario per print */
+    private void print(Node<V> t, int level) {
+        if (t == null)
+            return;
+
+        for (int i = 0; i < level - 1; i++) {
+            System.out.print("   ");
+        }
+
+        if (level > 0) {
+            System.out.print(" |--");
+        }
+
+        System.out.println(t.key);
+
+        print(t.left, level + 1);
+        print(t.right, level + 1);
+    }
+
+    /* Stampa una rappresentazione dell’albero */
+    void print() {
+        print(this.root, 0);
+    }
+
+    /* Metodo ausiliario per predecessor */
+    private Node<V> predecessor(Node<V> n, int k) {
+        if (n == null)
+            return null;
+
+        else if (k <= n.key)
+            return predecessor(n.left, k);
+
+        Node<V> t = predecessor(n.right, k);
+        if (t == null)
+            return n;
+
+        return t;
+    }
+
+    /* Restituisce il nodo del BST avente la chiave maggiore tra quelle minori di k */
+    int predecessor(int k) {
+        Node<V> predecessor = predecessor(this.root, k);
         
-        if (k < node.key) {
-            node.left = removeRec(node.left, k);
-        } else if (k > node.key) {
-            node.right = removeRec(node.right, k);
-        } else {
-            // Nodo trovato, da rimuovere
-            if (node.left == null) {
-                return node.right;
-            } else if (node.right == null) {
-                return node.left;
-            } else {
-                // Nodo con due figli
-                Node successor = findMinRec(node.right);
-                node.key = successor.key;
-                node.value = successor.value;
-                node.right = removeMinRec(node.right);
-            }
-        }
-        
-        return node;
-    }
-    
-    public void print() {
-        System.out.println("BST structure:");
-        printRec(root, "", true);
-        System.out.println();
-    }
-    
-    private void printRec(Node node, String prefix, boolean isLast) {
-        if (node != null) {
-            System.out.println(prefix + (isLast ? "└── " : "├── ") + node.key + ":" + node.value);
-            
-            if (node.left != null || node.right != null) {
-                if (node.left != null) {
-                    printRec(node.left, prefix + (isLast ? "    " : "│   "), node.right == null);
-                }
-                if (node.right != null) {
-                    printRec(node.right, prefix + (isLast ? "    " : "│   "), true);
-                }
-            }
-        }
-    }
-    
-    public int predecessor(int k) {
-        Node pred = predecessorRec(root, k, null);
-        if (pred == null) {
-            throw new RuntimeException("Nessun predecessore trovato per la chiave " + k);
-        }
-        return pred.key;
-    }
-    
-    private Node predecessorRec(Node node, int k, Node predecessor) {
-        if (node == null) {
-            return predecessor;
-        }
-        
-        if (k <= node.key) {
-            // k è minore o uguale alla chiave del nodo corrente
-            // il predecessore è nel sottoalbero sinistro
-            return predecessorRec(node.left, k, predecessor);
-        } else {
-            // k è maggiore della chiave del nodo corrente
-            // il nodo corrente potrebbe essere il predecessore
-            // ma potrebbe esserci uno migliore nel sottoalbero destro
-            return predecessorRec(node.right, k, node);
-        }
+        if (predecessor == null)
+            return -1;
+        else
+            return predecessor.key;
     }
 }
