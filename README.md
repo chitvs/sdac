@@ -4,12 +4,12 @@ This repository contains a collection of data structures and algorithms exercise
 
 The exercises are provided in chronological order based on the laboratory sessions, providing a structured approach for study and review sessions. These exercises cover a wide range of topics, including:
 
-- Sorting algorithms (Bubble Sort, Merge Sort, Quick Sort, Heap Sort)
-- Search algorithms (Binary Search, Selection algorithms)
-- Data structures (Arrays, Linked Lists, Stacks, Queues, Hash Tables, BSTs, Heaps)
-- Graph algorithms (BFS, DFS, Shortest Path, MST)
-- Dynamic programming (Knapsack, LCS, LIS, Chain Matrix Multiplication)
-- Greedy algorithms (Activity Selection, Huffman Coding)
+- Sorting algorithms
+- Search algorithms
+- Data structures
+- Graph algorithms
+- Dynamic programming
+- Greedy algorithms
 - Complexity analysis and Big-O notation
 
 This compilation serves as a valuable resource for students aiming to strengthen their understanding of data structures and algorithms concepts and prepare for examinations effectively.
@@ -19,20 +19,20 @@ This compilation serves as a valuable resource for students aiming to strengthen
 ### Java
 Navigate to the exercise directory and use `javac` to compile the Java file:
 ```sh
-cd eX/java/
+cd src/exercises/<eX>/java/
 javac *.java
 java <MainClass> [arguments]
 ```
 
 ### C
-Navigate to the exercise directory and use `gcc` or `make` to compile the C file:
+Navigate to the exercise directory and use `make` to compile the C file:
 ```sh
-cd eX/c/
+cd src/exercises/<eX>/c/
 make
 ./<executable> [arguments]
 ```
 
-Alternatively, compile manually:
+Alternatively, compile manually with `gcc`:
 ```sh
 gcc -g -o <executable> <source_files>
 ```
