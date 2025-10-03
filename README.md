@@ -19,7 +19,7 @@ This compilation serves as a valuable resource for students aiming to strengthen
 ### Java
 Navigate to the exercise directory and use `javac` to compile the Java file:
 ```sh
-cd src/exercises/<eX>/java/
+cd src/exercises/<eXX>/java/
 javac *.java
 java <MainClass> [arguments]
 ```
@@ -27,7 +27,7 @@ java <MainClass> [arguments]
 ### C
 Navigate to the exercise directory and use `make` to compile the C file:
 ```sh
-cd src/exercises/<eX>/c/
+cd src/exercises/<eXX>/c/
 make
 ./<executable> [arguments]
 ```
