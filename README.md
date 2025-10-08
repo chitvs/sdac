@@ -16,6 +16,12 @@ This compilation serves as a valuable resource for students aiming to strengthen
 
 ## How to compile and run
 
+Clone the repository:
+```sh
+git clone https://github.com/chitvs/sdac.git
+cd sdac
+```
+
 ### Java
 Navigate to the exercise directory and use `javac` to compile the Java file:
 ```sh
