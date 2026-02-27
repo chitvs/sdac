@@ -44,4 +44,4 @@ gcc -g -o <executable> <source_files>
 ```
 
 > [!NOTE]  
-> Some exercises may require specific input files or command-line arguments. Check the individual exercise `pdf` for detailed instructions.
+> Some exercises may require specific input files or command-line arguments.
