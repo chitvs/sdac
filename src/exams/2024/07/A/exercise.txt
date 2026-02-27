@@ -1,0 +1,14 @@
+Distanze minime su grafi pesati.
+
+In questo problema si fa riferimento a grafi semplici diretti, con pesi sugli archi, rappresentati con liste di incidenza. In particolare, il grafo è una lista di coppie (nodo, lista di incidenza). La lista di incidenza di un nodo contiene tutti gli archi uscenti dal nodo, nonché i loro pesi. Più in dettaglio, ogni arco di una lista di incidenza è una terna (source, target, weight), con source e target rispettivamente i nodi origine e destinazione dell'arco e weight il suo peso (positivo). La rappresentazione degli archi è data dalla classe Edge (Java) o dalla struct graph_edge in graph.h.
+
+Sono inoltre già disponibili le primitive di manipolazione del grafo (get lista nodi, get lista archi aventi origine da un nodo dato ecc..). Si noti che le primitive forniscono un insieme base per la manipolazione di grafi, ma i problemi proposti possono essere risolti usandone solo un sottoinsieme. Infine, le classi MinHeap e HeapEntry (Java) o il modulo min_heap.c (in C) implementano un heap minimale che gestisce coppie con chiavi intere e valori di tipo generico.
+
+Tutto ciò premesso, risolvere al calcolatore quanto segue, in Java o C:
+
+Implementare la funzione/metodo public static <V> void distances (Graph<V> g) della classe GraphServices (o void distances (graph* g) del modulo graph_services.c in C) che, dato un grafo g, stampa le distanze minime da ogni nodo a tutti gli altri nodi raggiungibili nel grafo. Per i nodi non raggiungibili, la distanza andrà impostata a un valore di riferimento (lo studente può ad esempio usare il valore 100000). La funzione/metodo dovrebbe stampare una stringa equivalente a questa per ogni nodo: [a:0, b:2, d:3, c:1, e:2, f:4]. L'ordine di stampa non è importante.
+
+Suggerimenti:
+i) In Java/C: si consiglia di definire una funzione/metodo privato che calcola le distanze minime dal generico nodo del grafo;
+ii) In Java: si consiglia di usare una HashMap per associare i nodi del grafo a corrispondenti oggetti HeapEntry se necessario.
+La valutazione terrà conto dell'efficienza delle soluzioni proposte.

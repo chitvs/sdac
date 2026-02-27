@@ -1,0 +1,9 @@
+Ordinamento topologico.
+
+In questo problema si fa riferimento a grafi semplici diretti. In particolare, ogni nodo ha associata la lista dei vicini uscenti (vicini ai quali il nodo è connesso da archi uscenti) e dei vicini entranti (nodi che hanno archi diretti verso il nodo considerato). Il grafo è descritto nella classe Graph.java (Java) e nel modulo graph.c (C). Il generico nodo è descritto nella classe interna Graph.GraphNode (Java) e in struct graph_node (C).
+
+Sono inoltre già disponibili le primitive di manipolazione del grafo: creazione di grafo vuoto, lista dei vicini uscenti ed entranti di ciascun nodo (quest'ultima non necessaria per lo svolgimento di questo esercizio) ecc. Per dettagli sulle segnature di tali primitive, così come per dettagli su quali porzioni di memoria allocata vengono liberate dalle varie primitive di cancellazione, si rimanda ai file sorgente distribuiti e ai commenti in essi contenuti. In particolare, per Java si rimanda al file Graph.java, per C si rimanda all'header graph.h. Si noti che le primitive forniscono un insieme base per la manipolazione di grafi, ma i problemi proposti possono essere risolti usandone solo un sottoinsieme.
+
+Tutto ciò premesso, risolvere al calcolatore quanto segue, in Java o C:
+
+Implementare la funzione/metodo public static <V> void tsort (Graph<V> g) della classe GraphServices (o la funzione void tsort (graph* g) del modulo graph_services in C) che, dato un grafo diretto g, verifica se g ammetta un ordinamento topologico o meno. Nel primo caso, la funzione/metodo deve stampare un possibile ordinamento topologico dei nodi, mentre nel secondo caso deve stampare un messaggio (ad esempio, "Il grafo dato non ammette un ordinamento topologico").

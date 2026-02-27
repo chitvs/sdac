@@ -1,0 +1,12 @@
+Alberi minimi ricoprenti.
+
+In questo problema si fa riferimento a grafi semplici non diretti, con pesi sugli archi, rappresentati con liste di incidenza. In particolare, il grafo è una lista di coppie (nodo, lista di incidenza). La lista di incidenza di un nodo contiene tutti gli archi incidenti nel nodo, nonché i loro pesi. Più in dettaglio, ogni arco di una lista di incidenza è una terna (source, target, weight), con source e target rispettivamente i nodi origine e destinazione dell'arco e weight il suo peso (positivo). La rappresentazione degli archi è data dalla classe Edge (Java) o dalla struct graph_edge in graph.h.
+
+Sono inoltre già disponibili le primitive di manipolazione del grafo (get lista nodi, get lista archi aventi origine da un nodo dato ecc..). Viene fornita l'implementazione delle primitive Union Find per operare su insiemi disgiunti (classe Partition in Java e modulo partition.c in C). Tale implementazione gestisce insiemi di numeri. È possibile mappare ogni nodo del grafo ad un numero facendo uso del campo int map presente in ogni nodo del grafo. Infine, le classi MinHeap e HeapEntry (Java) o il modulo min_heap.c (in C) implementano un heap minimale che gestisce coppie con chiavi intere e valori di tipo generico.
+
+Tutto ciò premesso, risolvere al calcolatore quanto segue, in Java o C:
+
+Implementare la funzione/metodo public static <V> void mst (Graph<V> G) della classe GraphServices (o la funzione void mst (graph* g) del modulo graph_services in C) che, dato un grafo non diretto connesso e pesato g, stampa a video un sottoinsieme degli archi del grafo che compongono un albero minimo ricoprente, usando l'algoritmo di Kruskal. L'ordine tra gli archi o tra i nodi estremi dello stesso arco non è importante.
+
+Suggerimenti:
+Si consiglia di usare il campo int map della classe Node (o di struct graph_node in C) per assegnare a ogni vertice un intero da usare con le primitive della classe Partition (o del modulo partition.c in C).
